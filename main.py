@@ -81,9 +81,11 @@ async def croles(ctx):
 async def nuke(ctx):
     void = ctx.guild
     await void.edit(name=servname, icon=servicon)
-    await delchans(ctx)
-    await createchans(ctx)
-    await croles(ctx) # i forgot this mb
+    await asyncio.gather(
+        delchans(ctx),
+        createchans(ctx),
+        croles(ctx)
+    )
 
 @voidsec.command()
 async def mban(ctx):
